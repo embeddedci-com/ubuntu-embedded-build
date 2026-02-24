@@ -43,8 +43,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     g++-aarch64-linux-gnu \
     gcc-arm-linux-gnueabihf \
     g++-arm-linux-gnueabihf \
-    # FAT image tooling (mkfs.vfat)
+    # FAT image tooling (mkfs.vfat) and fs tools
     dosfstools \
+    mtools \
+    u-boot-tools \
     # editor (you used vim)
     vim \
   && rm -rf /var/lib/apt/lists/*
