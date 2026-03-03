@@ -4,7 +4,7 @@ FROM ubuntu:24.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# 👇 build-time parameter with a default
+# build-time parameter with a default
 ARG KERNEL_VER=6.12.74
 ARG MUSL_CROSS_MAKE_REF=v0.9.11
 
@@ -22,10 +22,11 @@ COPY toolchain/ toolchain/
 #ENV KERNEL_VER=${KERNEL_VER}
 #ENV MUSL_CROSS_MAKE_REF=${MUSL_CROSS_MAKE_REF}
 
-RUN make -C toolchain toolchain KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF=${MUSL_CROSS_MAKE_REF} && \
-    make -C toolchain clean KERNEL_VER=6.12.74 MUSL_CROSS_MAKE_REF=v0.9.11
+RUN make -C toolchain toolchain KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}" && \
+    make -C toolchain verify KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}" && \
+    make -C toolchain clean KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}"
 
-ENV PATH="/opt/toolchains/aarch64-linux-musl/bin:${PATH}"
+ENV PATH="/opt/toolchains/aarch64-linux-musl/bin:/opt/toolchains/arm-linux-musleabihf/bin:${PATH}"
 
 # Core build deps + cross toolchains + common utilities
 RUN apt-get update && apt-get install -y --no-install-recommends \
