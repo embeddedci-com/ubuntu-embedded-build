@@ -26,9 +26,9 @@ RUN make -C toolchain arm64 KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MU
     make -C toolchain verify-arm64 KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}" && \
     make -C toolchain clean KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}"
 
-#RUN make -C toolchain arm KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}" && \
-#    make -C toolchain verify-arm KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}" && \
-#    make -C toolchain clean KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}"
+RUN make -C toolchain arm KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}" && \
+    make -C toolchain verify-arm KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}" && \
+    make -C toolchain clean KERNEL_VER="${KERNEL_VER}" MUSL_CROSS_MAKE_REF="${MUSL_CROSS_MAKE_REF}"
 
 ENV PATH="/opt/toolchains/aarch64-linux-musl/bin:/opt/toolchains/arm-linux-musleabihf/bin:${PATH}"
 
