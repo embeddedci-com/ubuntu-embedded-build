@@ -80,6 +80,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     vim \
     # fakeroot
     fakeroot \
+    # jq
+    jq \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
