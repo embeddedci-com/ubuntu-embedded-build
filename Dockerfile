@@ -82,6 +82,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fakeroot \
     # jq
     jq \
+    # python-venv
+    python3.12-venv \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
