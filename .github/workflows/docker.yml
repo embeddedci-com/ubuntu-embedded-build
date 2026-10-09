@@ -10,7 +10,8 @@ env:
 
 jobs:
   build-amd64:
-    runs-on: ubuntu-latest
+    # Pinned to ubuntu-24.04: ubuntu-latest moves to Ubuntu 26 from 2026-10-19. Unpin once 26.04 is verified.
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       packages: write
@@ -68,7 +69,7 @@ jobs:
           cache-to: type=gha,mode=max,scope=arm64
 
   manifest:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [build-amd64, build-arm64]
     permissions:
       packages: write
